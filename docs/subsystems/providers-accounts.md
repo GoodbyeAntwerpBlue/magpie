@@ -427,6 +427,11 @@ the price is the own id's first (`ListPrice`). `TestModelIDListedAndAskedForByOw
 
 ## Constraints and failure behavior
 
+AiHubMix has returned `100000000` from `/dashboard/billing/remain` for
+API keys with unlimited quota. Magpie treats that value and the legacy
+negative value as an unlimited key. Add the account’s management key in
+provider settings to read the account balance. [Balance reader](../../internal/provider/balance.go)
+
 An allowance deliberately not requested (a saved Claude account outside
 its card refresh, or allowances set to *When I ask*) can use the last
 reading with `readDeferred: true`. `AsOf` and `ReadAt` still date that
